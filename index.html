@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Touhou clone</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <!-- Crafty.js -->
+    <script src="assets/js/crafty-min.js"></script>
+
+    <!-- Classes -->
+    <script src="assets/js/classes/Collectible.js" async defer></script>
+    <script src="assets/js/classes/Projectile.js" async defer></script>
+    <script src="assets/js/classes/Minion.js" async defer></script>
+    <script src="assets/js/classes/Bullet.js" async defer></script>
+    <script src="assets/js/classes/Player.js" async defer></script>
+
+    <script src="assets/js/default.js" async defer></script>
+</head>
+
+<body onload="onLoad();">
+    <div id="startScreen">
+        <h1>Press <span id="confirmKey"></span> to start</h1>
+    </div>
+    <div id="gameWrapper">
+        <div id="cr-stage"></div>
+        <div id="info">
+            <div id="scoreInfo">
+                <div id="highScore"><span>High Score: </span><span class="amount"></span></div>
+                <div id="score"><span>Score: </span><span class="amount"></span></div>
+            </div>
+            <div id="playerInfo">
+                <div id="power"><span>Power: </span></div>
+                <div id="lives"><span>Lives: </span></div>
+                <div id="bombs"><span>Bombs: </span></div>
+            </div>
+        </div>
+        <div id="fpsCounter"></div>
+    </div>
+</body>
+<script>
+    function onLoad() {
+        document.addEventListener("keydown", keyDown);
+        document.addEventListener("keyup", keyUp);
+
+        document.querySelector("#confirmKey").innerHTML = getBind("Confirm");
+        document.querySelector("#highScore .amount").innerHTML = "000000000";
+        document.querySelector("#score .amount").innerHTML = "000000000";
+    }
+</script>
+
+</html>
