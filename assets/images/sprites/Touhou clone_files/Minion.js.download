@@ -8,7 +8,7 @@ class Minion {
         this.width = 32;
         this.height = 32;
         this.minion = Crafty.e("2D, Canvas, Collision, Color, minion").attr({ x: x, y: y, w: this.width, h: this.height }).color("red");
-        this.minion.z = 3;
+        this.minion.z = 1;
         this.minion.onHit("bullet", () => this.checkCollision());
         this.move();
 

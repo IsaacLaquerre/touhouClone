@@ -3,7 +3,7 @@ var paused = false;
 
 var highScore = 0;
 var score = 0;
-var power = 125;
+var power = 10;
 var lives = 5;
 var bombs = 4;
 var difficulty = "easy";
@@ -144,14 +144,14 @@ function refreshScore() {
 }
 
 function refreshPower() {
-    if (player.power < 128) {
+    if (player.power < 125) {
         document.querySelector("#power .amount").classList.remove("maxColor");
         document.querySelector("#power .amount").innerHTML = player.power;
         document.querySelector("#powerBar").style.width = player.power + "px";
     } else {
         document.querySelector("#power .amount").classList.add("maxColor");
         document.querySelector("#power .amount").innerHTML = "MAX";
-        document.querySelector("#powerBar").style.width = "128px";
+        document.querySelector("#powerBar").style.width = "125px";
     }
 }
 

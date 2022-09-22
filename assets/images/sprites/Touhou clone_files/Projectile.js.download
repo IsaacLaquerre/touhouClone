@@ -29,7 +29,6 @@ class Projectile {
         this.projectile = Crafty.e("2D, Canvas, Color, projectile, " + this.type).attr({ x: x, y: y, w: this.width, h: this.height });
         this.projectile.bind("UpdateFrame", () => this.update());
         this.projectile.rotation = ((Math.atan2(this.to.y - this.projectile.y, this.to.x - this.projectile.x) * (180 / Math.PI)) + 90);
-        this.projectile.z = 2;
     }
 
     update() {

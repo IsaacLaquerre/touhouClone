@@ -31,13 +31,15 @@
         <div id="cr-stage"></div>
         <div id="info">
             <div id="scoreInfo">
-                <div id="highScore"><span>High Score: </span><span class="amount"></span></div>
-                <div id="score"><span>Score: </span><span class="amount"></span></div>
+                <div id="highScore"><span>High Score </span><span class="amount"></span></div>
+                <div id="score"><span>Score </span><span class="amount"></span></div>
             </div>
             <div id="playerInfo">
-                <div id="power"><span>Power: </span></div>
-                <div id="lives"><span>Lives: </span></div>
-                <div id="bombs"><span>Bombs: </span></div>
+                <div id="power"><span>Power </span>
+                    <div id="powerBar"><span class="amount"></span></div>
+                </div>
+                <div id="lives"><span>Lives </span></div>
+                <div id="bombs"><span>Bombs </span></div>
             </div>
         </div>
         <div id="fpsCounter"></div>
@@ -45,12 +47,53 @@
 </body>
 <script>
     function onLoad() {
-        document.addEventListener("keydown", keyDown);
-        document.addEventListener("keyup", keyUp);
 
-        document.querySelector("#confirmKey").innerHTML = getBind("Confirm");
-        document.querySelector("#highScore .amount").innerHTML = "000000000";
-        document.querySelector("#score .amount").innerHTML = "000000000";
+        Crafty.load({
+            "sprites": {
+                "assets/images/sprites/items.png": {
+                    tile: 16,
+                    tileh: 16,
+                    map: {
+                        smallPower: [0, 0, 0.9, 0.9],
+                        points: [1, 0, 0.9, 0.9],
+                        bigPower: [2, 0, 1, 1],
+                        bomb: [3, 0, 1, 1],
+                        fullPower: [4, 0, 1, 1],
+                        life: [5, 0, 1, 1],
+                        bombClearPoints: [6, 0, 0.9, 0.9],
+                        circle: [6, 7, 0.9, 0.9],
+                        single: [4, 2, 0.9, 0.9]
+                    }
+                },
+                "assets/images/sprites/player.png": {
+                    tile: 16,
+                    tileh: 16,
+                    map: {
+                        idle1: [0, 0, 2, 3],
+                        idle2: [2, 0, 2, 3],
+                        idle3: [4, 0, 2, 3],
+                        idle4: [6, 0, 2, 3],
+                        turning1: [2, 3, 2, 3.1],
+                        turning2: [4, 3, 2, 3.1],
+                        turning3: [6, 3, 2, 3.1],
+                        turning4: [8, 3, 2, 3.1],
+                        turned1: [10, 3, 2, 3.1],
+                        turned2: [12, 3, 2, 3.1],
+                        turned3: [14, 3, 2, 3.1],
+                    }
+                }
+            }
+        }, () => {
+            document.addEventListener("keydown", keyDown);
+            document.addEventListener("keyup", keyUp);
+
+            document.querySelector("#confirmKey").innerHTML = getBind("Confirm");
+            refreshHighScore();
+            refreshScore();
+            refreshPower();
+            refreshLives();
+            refreshBombs();
+        });
     }
 </script>
 
